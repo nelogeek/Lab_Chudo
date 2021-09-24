@@ -1,20 +1,63 @@
-﻿// Lab_Chudo.cpp : Этот файл содержит функцию "main". Здесь начинается и заканчивается выполнение программы.
-//
-
-#include <iostream>
+﻿#include "header.h"
 
 int main()
 {
-    std::cout << "Hello World!\n";
+    int n;
+    int sum_minor = 0;
+    cout << "Enter n: ";
+    cin >> n;
+    int* array = new int[n];
+    initialize_with_random_value(array, n);
+    for (int i = 0; i < n; i++) {
+        cout << array[i] << " ";
+    }
+    for (int i = 0; i < n; i++) {
+        if (array[i] < 0) {
+            sum_minor += array[i];
+        }
+    }
+    cout << endl;
+    cout << "Sum minor = " << sum_minor;
+
+    int max = array[0];
+    int min = array[1];
+    int index_max = -1;
+    int index_min = -1;
+    int count = 0;
+    int prod = 1;
+    for (int i = 0; i < n; i++) {
+        if (max < array[i]) {
+            max = array[i];
+            index_max = i;
+        }
+        else  if (min > array[i]) {
+            min = array[i];
+            index_min = i;
+        }
+    }
+    cout << endl;
+    if (index_min < index_max && index_min != -1 && index_max != -1) {
+        for (int i = (index_min + 1); index_min < index_max; index_min++) {
+            prod *= array[i];
+            cout << array[i] << " ";
+        }
+    }
+    else if (index_max < index_min && index_min != -1 && index_max != -1) {
+        for (int i = (index_max + 1); index_max < index_min; index_max++) {
+            prod = array[i];
+            cout << array[i] << " ";
+        }
+    }
+    else {
+        cout << "ERROR!!!" << endl;
+    }
+    cout << endl;
+    cout << "The product of numbers is " << prod << endl;
+
+    bubble_sort(array, n);
+    for (int i = 0; i < n; i++) {
+        cout << array[i] << " ";
+    }
+
 }
 
-// Запуск программы: CTRL+F5 или меню "Отладка" > "Запуск без отладки"
-// Отладка программы: F5 или меню "Отладка" > "Запустить отладку"
-
-// Советы по началу работы 
-//   1. В окне обозревателя решений можно добавлять файлы и управлять ими.
-//   2. В окне Team Explorer можно подключиться к системе управления версиями.
-//   3. В окне "Выходные данные" можно просматривать выходные данные сборки и другие сообщения.
-//   4. В окне "Список ошибок" можно просматривать ошибки.
-//   5. Последовательно выберите пункты меню "Проект" > "Добавить новый элемент", чтобы создать файлы кода, или "Проект" > "Добавить существующий элемент", чтобы добавить в проект существующие файлы кода.
-//   6. Чтобы снова открыть этот проект позже, выберите пункты меню "Файл" > "Открыть" > "Проект" и выберите SLN-файл.
