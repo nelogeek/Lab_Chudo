@@ -1,0 +1,2 @@
+C:\Users\iell\OneDrive\Рабочий стол\Структуры\Женя\Lab_Chudo\Debug\Lab_Chudo.cpp
+C:\Users\iell\OneDrive\Рабочий стол\Структуры\Женя\Lab_Chudo\Debug\Header.h
